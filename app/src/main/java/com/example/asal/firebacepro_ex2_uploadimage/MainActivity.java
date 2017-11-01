@@ -1,5 +1,6 @@
 package com.example.asal.firebacepro_ex2_uploadimage;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
 
     private EditText mEditTextEmail,mEditTextPassword;
-    private Button mButtonSignin,mButtonSignout;
+    private Button mButtonSignin,mButtonSignout,mButtonAdd;
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
@@ -69,6 +70,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 mAuth.signOut();
                 Toast.makeText(MainActivity.this,"Signing out....",Toast.LENGTH_SHORT).show();
+            }
+        });
+        mButtonAdd = (Button)findViewById(R.id.btnAdd);
+        mButtonAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,AddToDatabase.class);
+                startActivity(intent);
+
             }
         });
 
