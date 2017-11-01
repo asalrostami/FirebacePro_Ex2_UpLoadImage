@@ -1,11 +1,13 @@
 package com.example.asal.firebacepro_ex2_uploadimage;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -50,8 +52,15 @@ public class MainActivity extends AppCompatActivity {
 
         mButtonSignin = (Button)findViewById(R.id.btnSignin);
         mButtonSignin.setOnClickListener(new View.OnClickListener() {
+
+
             @Override
             public void onClick(View v) {
+
+                //hiding keyboard
+                InputMethodManager imm = (InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(v.getWindowToken(),0);
+
                 String email = mEditTextEmail.getText().toString();
                 String password = mEditTextPassword.getText().toString();
                 if(!email.equals("") && !password.equals(""))
@@ -94,5 +103,10 @@ public class MainActivity extends AppCompatActivity {
         if (mAuthListener != null) {
             mAuth.removeAuthStateListener(mAuthListener);
         }
+    }
+
+    public void hideKeyboard(View view) {
+        InputMethodManager imm = (InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(view.getWindowToken(),0);
     }
 }
