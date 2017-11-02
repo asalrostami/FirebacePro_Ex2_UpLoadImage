@@ -21,12 +21,16 @@
                android:layout_height="wrap_content"
                android:id="@+id/editTextEmail"
                android:hint="Please Enter Email"
+               android:inputType="textEmailAddress"
                android:layout_margin="10dp"/>
+
+
            <EditText
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
                android:id="@+id/editTextPassword"
                android:hint="Please Enter Password"
+               android:inputType="textPassword"
                android:layout_margin="10dp"
                />
            <Button

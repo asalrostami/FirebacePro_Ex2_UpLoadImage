@@ -18,6 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/btnAddToDatabase"
-        android:text="Add to database"/>
+        android:text="Add to database"
+        android:onClick="addToDatabase"/>
 
 </LinearLayout>

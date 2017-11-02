@@ -62,25 +62,25 @@ public class AddToDatabase extends AppCompatActivity {
 
         mEditTextNewFood = (EditText)findViewById(R.id.editTextAddNewFood);
         mButtonAdd = (Button)findViewById(R.id.btnAdd);
-        mButtonAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String newFood = mEditTextNewFood.getText().toString();
-                if(!newFood.equals(""))
-                {
-                    //getting current user id as a key
-                    FirebaseUser user = mAuth.getCurrentUser();
-                    String userId = user.getUid();
-                    myRef.child(userId).child("Food").child("Favorite Foods").child(newFood).setValue("true");
-                    mEditTextNewFood.setText("");
-                }
-                else
-                {
-                    Toast.makeText(AddToDatabase.this,"Enter A Food",Toast.LENGTH_SHORT).show();
-                }
-                //finish();
-            }
-        });
+//        mButtonAdd.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String newFood = mEditTextNewFood.getText().toString();
+//                if(!newFood.equals(""))
+//                {
+//                    //getting current user id as a key
+//                    FirebaseUser user = mAuth.getCurrentUser();
+//                    String userId = user.getUid();
+//                    myRef.child(userId).child("Food").child("Favorite Foods").child(newFood).setValue("true");
+//                    mEditTextNewFood.setText("");
+//                }
+//                else
+//                {
+//                    Toast.makeText(AddToDatabase.this,"Enter A Food",Toast.LENGTH_SHORT).show();
+//                }
+//                //finish();
+//            }
+//        });
 
         // Read from the database
         myRef.addValueEventListener(new ValueEventListener() {
@@ -115,5 +115,22 @@ public class AddToDatabase extends AppCompatActivity {
         if (mAuthListener != null) {
             mAuth.removeAuthStateListener(mAuthListener);
         }
+    }
+
+    public void addToDatabase(View view) {
+        String newFood = mEditTextNewFood.getText().toString();
+                if(!newFood.equals(""))
+                {
+                    //getting current user id as a key
+                    FirebaseUser user = mAuth.getCurrentUser();
+                    String userId = user.getUid();
+                    myRef.child(userId).child("Food").child("Favorite Foods").child(newFood).setValue("true");
+                    mEditTextNewFood.setText("");
+                }
+                else
+                {
+                    Toast.makeText(AddToDatabase.this,"Enter A Food",Toast.LENGTH_SHORT).show();
+                }
+                //finish();
     }
 }
